@@ -54,7 +54,7 @@ AuthController:
 - Structure of project divided into Controllers, DTOs, Loaders (of Database), Models, Repositories, Security, Services.
 - Total work time - 8 hours.
 
-## What would i do differenty next time
+## What would i do differently next time
 
 1) Start project without Spring security so i could test the endpoints via Postman - I got blocked since I started with Spring Security and didn't hadle the security at the beginning.
 2) Try to remove the dependency of Spring Security in ongoing process.
