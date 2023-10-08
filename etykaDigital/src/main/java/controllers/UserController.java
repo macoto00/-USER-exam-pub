@@ -1,11 +1,8 @@
 package controllers;
 
-import DTOs.CreateUserDTO;
 import DTOs.UpdateUserDTO;
 import lombok.AllArgsConstructor;
 import models.User;
-import models.UserUpdateResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import services.UserService;
@@ -30,16 +27,6 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody CreateUserDTO createUserDTO) {
-        try {
-            User response = userService.createUser(createUserDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UserUpdateResponse(null, e.getMessage()).getUser());
-        }
-    }
-
     @PutMapping("/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDTO updateUserDTO) {
         User updatedUser = userService.updateUser(userId, updateUserDTO).getUser();
@@ -47,6 +34,17 @@ public class UserController {
             return ResponseEntity.ok().body(updatedUser);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long userId) {
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            userService.deleteUser(userId);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.noContent().build();
         }
     }
 }
