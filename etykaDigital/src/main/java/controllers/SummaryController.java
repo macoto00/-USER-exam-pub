@@ -1,3 +1,5 @@
+package controllers;
+
 import DTOs.SummaryDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
