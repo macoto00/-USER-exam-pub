@@ -18,6 +18,9 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    private String email;
+    private String password;
+    private UserRole role;
     private String name;
     private boolean isActive;
     private boolean isAdult;
