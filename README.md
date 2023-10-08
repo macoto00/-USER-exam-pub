@@ -3,6 +3,8 @@ ETYKA Digital Task
 
 # Project structure
 
+Using InteliJ IDEA Ultimate. GitHub. MySQL Database. 
+
 ## Dependencies
 
 1) Spring Boot
