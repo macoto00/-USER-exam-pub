@@ -18,8 +18,10 @@ public class Order {
     private int amount;
     private double price;
     @ManyToOne
+    @JoinColumn(name = "users_id")
     private User user;
     @ManyToOne
+    @JoinColumn(name = "drink_id")
     private Drink drink;
 
     public void setId(Long id) {

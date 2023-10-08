@@ -26,26 +26,19 @@ public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     private final UserRepository userRepository;
 
-    public User getUserFromRequest(HttpServletRequest request) {
-        String token = getJwtFromCookies(request);
-        if (token == null) {
-            return null;
-        }
-        String email = getUserNameFromJwtToken(token);
-        return userRepository.findByEmail(email).get();
-    }
-
     public ResponseCookie generateJwtCookie(Authentication userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getName());
         return generateCookie("token", jwt, "/", (int) (SecurityConstants.JWT_EXPIRATION_TIME / 1000));
     }
+
     public ResponseCookie generateJwtCookie(String username) {
         String jwt = generateTokenFromUsername(username);
         return generateCookie("token", jwt, "/", (int) (SecurityConstants.JWT_EXPIRATION_TIME / 1000));
     }
+
     public ResponseCookie generateRefreshJwtCookie(Authentication userPrincipal) {
         String jwt = generateRefreshTokenFromUsername(userPrincipal.getName());
-        return generateCookie("refreshToken", jwt, "/", (int) (SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME/1000));
+        return generateCookie("refreshToken", jwt, "/", (int) (SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME / 1000));
     }
 
     private ResponseCookie generateCookie(String name, String value, String path, int maxAge) {
@@ -108,12 +101,12 @@ public class JwtUtils {
         return username;
     }
 
-    public String getRefreshTokenValidateAndGenerateAccessToken(HttpServletRequest request){
-        if(request.getCookies() == null || request.getCookies().length == 0){
+    public String getRefreshTokenValidateAndGenerateAccessToken(HttpServletRequest request) {
+        if (request.getCookies() == null || request.getCookies().length == 0) {
             return null;
         }
         String refreshToken = getRefreshJwtFromCookies(request);
-        if(validateJwtToken(refreshToken)){
+        if (validateJwtToken(refreshToken)) {
 
             String username = getUserNameFromJwtRefreshToken(refreshToken);
             return username;
@@ -158,10 +151,5 @@ public class JwtUtils {
 
     private Key key() {
         return Keys.hmacShaKeyFor(SecurityConstants.JWT_SECRET);
-    }
-
-    public String extractUsername(String token) {
-        return Jwts.parserBuilder().setSigningKey(key()).build()
-                .parseClaimsJws(token).getBody().getSubject();
     }
 }
