@@ -18,8 +18,10 @@ Model (Model):
 
 UserModel:
 - Properties: Id, Name, IsActive, IsAdult, Pocket
+
 OrderModel:
 - Properties: Id, ProductName, Amount, Price
+
 DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
