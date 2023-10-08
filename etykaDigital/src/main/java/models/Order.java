@@ -19,6 +19,8 @@ public class Order {
     private double price;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private Drink drink;
 
     public void setId(Long id) {
         this.id = id;
