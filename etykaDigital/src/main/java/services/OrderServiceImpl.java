@@ -8,6 +8,8 @@ import models.User;
 import org.springframework.stereotype.Service;
 import repositories.OrderRepository;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -45,5 +47,10 @@ public class OrderServiceImpl implements OrderService {
         drinkService.updateDrink(drinkId, amount);
 
         return true;
+    }
+
+    @Override
+    public List<Order> getOrdersByDrinkId(Long drinkId) {
+        return orderRepository.findByDrinkId(drinkId);
     }
 }
