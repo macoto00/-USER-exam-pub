@@ -25,11 +25,11 @@ public class AppController {
     @PostMapping("/buy")
     public ResponseEntity<String> buyDrink(@RequestBody BuyRequest buyRequest) {
         Long userId = buyRequest.getUserId();
-        Long productId = buyRequest.getProductId();
+        Long drinkId = buyRequest.getProductId();
         double productPrice = buyRequest.getPrice();
         int amount = buyRequest.getAmount();
 
-        boolean purchaseSuccessful = orderService.processPurchase(userId, productId, productPrice, amount);
+        boolean purchaseSuccessful = orderService.processPurchase(userId, drinkId, productPrice, amount);
 
         if (purchaseSuccessful) {
             return ResponseEntity.status(HttpStatus.OK).body("Purchase successful.");
