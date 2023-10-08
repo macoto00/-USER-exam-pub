@@ -14,10 +14,11 @@ public class OrderServiceImpl implements OrderService {
 
     private final UserService userService;
     private final OrderRepository orderRepository;
+    private final DrinkService drinkService;
 
     @Override
     @Transactional
-    public boolean processPurchase(Long userId, Long productId, double productPrice, int amount) {
+    public boolean processPurchase(Long userId, Long drinkId, double productPrice, int amount) {
         User user = userService.getUserById(userId).orElse(null);
 
         if (user == null || !user.isAdult()) {
@@ -40,6 +41,8 @@ public class OrderServiceImpl implements OrderService {
         order.setUser(user);
 
         orderRepository.save(order);
+
+        drinkService.updateDrink(drinkId, amount);
 
         return true;
     }
