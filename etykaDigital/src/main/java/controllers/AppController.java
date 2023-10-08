@@ -1,6 +1,6 @@
 package controllers;
 
-import DTOs.BuyRequestDTO;
+import models.BuyRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +23,11 @@ public class AppController {
         return ResponseEntity.ok().body(drinkService.getDrinkMenu());
     }
     @PostMapping("/buy")
-    public ResponseEntity<String> buyDrink(@RequestBody BuyRequestDTO buyRequestDTO) {
-        Long userId = buyRequestDTO.getUserId();
-        Long productId = buyRequestDTO.getProductId();
-        double productPrice = buyRequestDTO.getPrice();
-        int amount = buyRequestDTO.getAmount();
+    public ResponseEntity<String> buyDrink(@RequestBody BuyRequest buyRequest) {
+        Long userId = buyRequest.getUserId();
+        Long productId = buyRequest.getProductId();
+        double productPrice = buyRequest.getPrice();
+        int amount = buyRequest.getAmount();
 
         boolean purchaseSuccessful = orderService.processPurchase(userId, productId, productPrice, amount);
 
