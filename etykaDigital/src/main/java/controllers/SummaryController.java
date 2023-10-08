@@ -1,18 +1,27 @@
 package controllers;
 
+import DTOs.SummaryDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import services.DrinkService;
+
+import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/summary")
 public class SummaryController {
 
+    private DrinkService drinkService;
+
     @GetMapping("/all")
     public ResponseEntity<?> getAllSummary() {
-        // Implement logic to get summary for all drinks
-        return null;
+        List<SummaryDTO> summaryList = drinkService.getDrinkSummaries();
+
+        return ResponseEntity.ok(summaryList);
     }
 
     @GetMapping("/product")
