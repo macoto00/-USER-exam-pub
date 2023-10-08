@@ -27,6 +27,9 @@ OrderModel:
 DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
+DTOs:
+- UserUpdateDTO
+
 VIEW:
 
 Views for displaying user-related information, drink menu, and order summary.
