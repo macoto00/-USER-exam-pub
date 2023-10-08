@@ -16,18 +16,18 @@ Using InteliJ IDEA Ultimate, Spring Framework, GitHub, MySQL Database.
 
 ## MVC
 
-MODEL:
+1) MODEL:
 
 User, Order, Drink, Role, BuyRequest. 
 
 Working with DTOs.
 
-VIEW:
+2) VIEW:
 
 Views for displaying user-related information, drink menu, and order summary.
 Views should render the data from the models in a user-friendly format for the end-users.
 
-CONTROLLER:
+3) CONTROLLER:
 
 UserController:
 - Handles requests related to users.
@@ -59,6 +59,11 @@ AuthController:
 1) Start project without Spring security so i could test the endpoints via Postman - I got blocked since I started with Spring Security and didn't hadle the security at the beginning.
 2) Try to remove the dependency of Spring Security in ongoing process.
 3) Check relations for Entities properly.
+
+## What to add in future development
+
+1) Nice and decent Frontend.
+2) 100 % cover of Testing.
 
 # Task Requirements
 
