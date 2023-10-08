@@ -45,3 +45,7 @@ OrderController:
 DrinkController:
 - Handles requests related to the drink menu.
 - Method for handling GET requests for retrieving the drink menu.
+
+## Others
+
+For Database connection using Environment variables to protect sensitive data.
