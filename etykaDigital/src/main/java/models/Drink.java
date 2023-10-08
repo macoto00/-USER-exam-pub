@@ -18,6 +18,7 @@ public class Drink {
     private String productName;
     private double price;
     private boolean isForAdult;
+    private int totalSoldAmount;
 
     public void setId(Long id) {
         this.id = id;
