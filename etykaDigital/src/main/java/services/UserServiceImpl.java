@@ -2,7 +2,6 @@ package services;
 
 import DTOs.CreateUserDTO;
 import DTOs.UpdateUserDTO;
-import exceptions.EmailAlreadyInUseException;
 import lombok.AllArgsConstructor;
 import models.User;
 import models.UserUpdateResponse;
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(CreateUserDTO createUserDTO) {
         if (userRepository.findByEmail(createUserDTO.getEmail()).isPresent()) {
-            throw new EmailAlreadyInUseException("Email is already in use. Please choose a different email.");
+            throw new RuntimeException("Email is already in use. Please choose a different email.");
         }
 
         User user = new User();
