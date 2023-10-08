@@ -28,12 +28,14 @@ DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
 DTOs:
-- UserUpdateDTO
+- UpdateUserDTO
+- CreateUserDTO
 
 VIEW:
 
 Views for displaying user-related information, drink menu, and order summary.
 Views should render the data from the models in a user-friendly format for the end-users.
+Had break for a lunch :) then continued developing this task.
 
 CONTROLLER:
 
@@ -53,3 +55,4 @@ DrinkController:
 
 For Database connection using Environment variables to protect sensitive data.
 Task was tested continuously via Postman.
+Had break for Lunch :)) then continued developing.
