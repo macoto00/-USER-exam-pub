@@ -2,9 +2,11 @@ package models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
 @Table(name = "orders")
 @AllArgsConstructor
 @NoArgsConstructor
