@@ -49,3 +49,4 @@ DrinkController:
 ## Others
 
 For Database connection using Environment variables to protect sensitive data.
+Task was tested continuously via Postman.
