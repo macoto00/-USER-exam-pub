@@ -2,7 +2,6 @@ package controllers;
 
 import DTOs.CreateUserDTO;
 import DTOs.UpdateUserDTO;
-import exceptions.EmailAlreadyInUseException;
 import lombok.AllArgsConstructor;
 import models.User;
 import models.UserUpdateResponse;
@@ -36,11 +35,10 @@ public class UserController {
         try {
             User response = userService.createUser(createUserDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (EmailAlreadyInUseException e) {
+        } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UserUpdateResponse(null, e.getMessage()).getUser());
         }
     }
-
 
     @PutMapping("/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDTO updateUserDTO) {
