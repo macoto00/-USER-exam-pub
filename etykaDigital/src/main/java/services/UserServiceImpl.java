@@ -26,12 +26,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
+    public User createUser(User user) {
         userRepository.save(user);
+        return user;
     }
 
     @Override
-    public void updateUser(Long userId, UpdateUserDTO updateUserDTO) {
+    public User updateUser(Long userId, UpdateUserDTO updateUserDTO) {
         Optional<User> optionalUser = userRepository.findById(userId);
 
         if (optionalUser.isPresent()) {
@@ -43,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
             userRepository.save(existingUser);
         }
+        return null;
     }
 
     @Override
