@@ -1,6 +1,5 @@
 package services;
 
-import DTOs.CreateUserDTO;
 import DTOs.UpdateUserDTO;
 import lombok.AllArgsConstructor;
 import models.User;
@@ -25,24 +24,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> getUserById(Long userId) {
         return userRepository.findById(userId);
-    }
-
-    @Override
-    public User createUser(CreateUserDTO createUserDTO) {
-        if (userRepository.findByEmail(createUserDTO.getEmail()).isPresent()) {
-            throw new RuntimeException("Email is already in use. Please choose a different email.");
-        }
-
-        User user = new User();
-        user.setName(createUserDTO.getName());
-        user.setActive(createUserDTO.isActive());
-        user.setAdult(createUserDTO.isAdult());
-        user.setPocket(createUserDTO.getPocket());
-        user.setRole(createUserDTO.getRole());
-        user.setEmail(createUserDTO.getEmail());
-        user.setPassword(createUserDTO.getPassword());
-        userRepository.save(user);
-        return user;
     }
 
     @Override
@@ -75,5 +56,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String name) {
+        return userRepository.findByEmail(name);
     }
 }
