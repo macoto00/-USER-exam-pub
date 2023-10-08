@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserService {
     List<User> getAllUsers();
     Optional<User> getUserById(Long userId);
-    void createUser(User user);
-    void updateUser(Long userId, UpdateUserDTO updateUserDTO);
+    User createUser(User user);
+    User updateUser(Long userId, UpdateUserDTO updateUserDTO);
     void deleteUser(Long userId);
 }
