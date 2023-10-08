@@ -19,10 +19,10 @@ Using InteliJ IDEA Ultimate. Spring Framework, GitHub, MySQL Database.
 MODEL:
 
 UserModel:
-- Properties: Id, Name, IsActive, IsAdult, Pocket
+- Properties: Id, Name, IsActive, IsAdult, Pocket, List of orders (OneToMany)
 
 OrderModel:
-- Properties: Id, ProductName, Amount, Price
+- Properties: Id, ProductName, Amount, Price, User mapped (ManyToOne)
 
 DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
