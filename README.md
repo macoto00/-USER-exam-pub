@@ -14,7 +14,7 @@ ETYKA Digital Task
 
 ## MVC
 
-Model (Model):
+MODEL:
 
 UserModel:
 - Properties: Id, Name, IsActive, IsAdult, Pocket
@@ -25,19 +25,21 @@ OrderModel:
 DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
-View:
+VIEW:
 
 Views for displaying user-related information, drink menu, and order summary.
 Views should render the data from the models in a user-friendly format for the end-users.
 
-Controller:
+CONTROLLER:
 
 UserController:
 - Handles requests related to users.
 - Methods for handling GET requests for getting all users and a specific user by ID.
+
 OrderController:
 - Handles requests related to orders.
 - Methods for handling POST requests for creating an order and GET requests for retrieving order summaries.
+
 DrinkController:
 - Handles requests related to the drink menu.
 - Method for handling GET requests for retrieving the drink menu.
