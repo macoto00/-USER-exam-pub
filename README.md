@@ -34,6 +34,7 @@ VIEW:
 
 Views for displaying user-related information, drink menu, and order summary.
 Views should render the data from the models in a user-friendly format for the end-users.
+Had break for a lunch :) then continued developing this task.
 
 CONTROLLER:
 
