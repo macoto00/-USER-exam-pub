@@ -1,8 +1,11 @@
 package controllers;
 
+import DTOs.CreateUserDTO;
 import DTOs.UpdateUserDTO;
+import exceptions.EmailAlreadyInUseException;
 import lombok.AllArgsConstructor;
 import models.User;
+import models.UserUpdateResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +33,18 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody CreateUserDTO createUserDTO) {
-        User user = new User();
-
-        // createuser DTO creation + update service
-
-        User savedUser = userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+        try {
+            User response = userService.createUser(createUserDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (EmailAlreadyInUseException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UserUpdateResponse(null, e.getMessage()).getUser());
+        }
     }
+
 
     @PutMapping("/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDTO updateUserDTO) {
-        User updatedUser = userService.updateUser(userId, updateUserDTO);
+        User updatedUser = userService.updateUser(userId, updateUserDTO).getUser();
         if (updatedUser != null) {
             return ResponseEntity.ok().body(updatedUser);
         } else {
