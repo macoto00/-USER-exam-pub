@@ -27,10 +27,7 @@ OrderModel:
 DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
-DTOs:
-- UpdateUserDTO
-- CreateUserDTO
-- SummaryDTO
+Working with DTOs.
 
 VIEW:
 
@@ -51,8 +48,12 @@ SummaryController:
 
 ## Others
 
-For Database connection using Environment variables to protect sensitive data.
-Had break for Lunch :)) then continued developing.
+- For Database connection using Environment variables to protect sensitive data.
+- Had break for Lunch :)) then continued developing.
+- Spring security for register and login.
+- Using JWT Token stored in cookies. 
+- Loading Database for Roles and Drinks.
+- Structure of project divided into Controllers, DTOs, Loaders (of Database), Models, Repositories, Security, Services.
 
 ## What would i do differenty next time
 
