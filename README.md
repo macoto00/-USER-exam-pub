@@ -28,7 +28,8 @@ DrinkModel:
 - Properties: Id, ProductName, Price, IsForAdult
 
 DTOs:
-- UserUpdateDTO
+- UpdateUserDTO
+- CreateUserDTO
 
 VIEW:
 
