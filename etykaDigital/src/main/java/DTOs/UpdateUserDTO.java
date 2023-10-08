@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UpdateUserDTO {
+    private String email;
+    private String password;
     private String name;
     private boolean isActive;
     private boolean isAdult;
