@@ -1,9 +1,8 @@
-package controllers;
-
 import DTOs.SummaryDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import services.DrinkService;
@@ -18,21 +17,20 @@ public class SummaryController {
     private DrinkService drinkService;
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllSummary() {
-        List<SummaryDTO> summaryList = drinkService.getDrinkSummaries();
-
+    public ResponseEntity<List<SummaryDTO>> getAllSummary() {
+        List<SummaryDTO> summaryList = drinkService.getAllDrinkSummaries();
         return ResponseEntity.ok(summaryList);
     }
 
     @GetMapping("/product")
-    public ResponseEntity<?> getSummaryByProduct() {
-        // Implement logic to get summary for each drink
-        return null;
+    public ResponseEntity<List<SummaryDTO>> getSummaryByProduct() {
+        List<SummaryDTO> summaryList = drinkService.getDrinkSummariesByProduct();
+        return ResponseEntity.ok(summaryList);
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<?> getSummaryByUser() {
-        // Implement logic to get summary for each user
-        return null;
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<SummaryDTO>> getSummaryByUser(@PathVariable Long userId) {
+        List<SummaryDTO> summaryList = drinkService.getDrinkSummariesByUser(userId);
+        return ResponseEntity.ok(summaryList);
     }
 }
