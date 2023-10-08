@@ -22,6 +22,7 @@ public class AppController {
     public ResponseEntity<?> getDrinkMenu() {
         return ResponseEntity.ok().body(drinkService.getDrinkMenu());
     }
+
     @PostMapping("/buy")
     public ResponseEntity<String> buyDrink(@RequestBody BuyRequest buyRequest) {
         Long userId = buyRequest.getUserId();
@@ -32,9 +33,9 @@ public class AppController {
         boolean purchaseSuccessful = orderService.processPurchase(userId, drinkId, productPrice, amount);
 
         if (purchaseSuccessful) {
-            return ResponseEntity.status(HttpStatus.OK).body("Purchase successful.");
+            return ResponseEntity.status(HttpStatus.OK).body("Purchase successful");
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Purchase unsuccessful.");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Purchase unsuccessful");
         }
     }
 }
