@@ -30,6 +30,7 @@ DrinkModel:
 DTOs:
 - UpdateUserDTO
 - CreateUserDTO
+- SummaryDTO
 
 VIEW:
 
@@ -41,18 +42,14 @@ CONTROLLER:
 
 UserController:
 - Handles requests related to users.
-- Methods for handling GET requests for getting all users and a specific user by ID.
 
-OrderController:
-- Handles requests related to orders.
-- Methods for handling POST requests for creating an order and GET requests for retrieving order summaries.
+AppController:
+- Handles requests related to application in general.
 
-DrinkController:
-- Handles requests related to the drink menu.
-- Method for handling GET requests for retrieving the drink menu.
+SummaryController:
+- Handles requests related to the summary tasks since they have common @RequestMapping("/summary").
 
 ## Others
 
 For Database connection using Environment variables to protect sensitive data.
-Task was tested continuously via Postman.
 Had break for Lunch :)) then continued developing.
